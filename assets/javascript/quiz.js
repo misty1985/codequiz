@@ -26,7 +26,7 @@ function buildQuiz() {
 
 function showResults() {
 
-    const answerContainers = quizContainer.querySelectorAll('.answers');
+    const answerContainers = quizContainer.querySelectorAll(".answers");
     let numCorrect = 0;
 
     myQuestions.forEach((currentQuestion, questionNumber) => {
@@ -38,32 +38,28 @@ function showResults() {
         if (userAnswer === currentQuestion.correctAnswer) {
             numCorrect++;
 
-            answerContainers[questionNumber].style.color = 'lightgreen';
+            answerContainers[questionNumber].style.color = "lightgreen";
         }
         else {
-            answerContainers[questionNumber].style.color = 'red';
+            answerContainers[questionNumber].style.color = "red";
         }
     });
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
 }
 
 function showSlide(n) {
-    slides[currentSlide].classList.remove('active-slide');
-    slides[n].classList.add('active-slide');
+    slides[currentSlide].classList.remove("active-slide");
+    slides[n].classList.add("active-slide");
     currentSlide = n;
     if (currentSlide === 0) {
-        previousButton.style.display = 'none';
-    }
-    else {
-        previousButton.style.display = 'inline-block';
     }
     if (currentSlide === slides.length - 1) {
-        nextButton.style.display = 'none';
-        submitButton.style.display = 'inline-block';
+        nextButton.style.display = "none";
+        submitButton.style.display = "inline-block";
     }
     else {
-        nextButton.style.display = 'inline-block';
-        submitButton.style.display = 'none';
+        nextButton.style.display = "inline-block";
+        submitButton.style.display = "none";
     }
 }
 
@@ -74,9 +70,9 @@ function showNextSlide() {
 function showPreviousSlide() {
     showSlide(currentSlide - 1);
 }
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
+const quizContainer = document.getElementById("quiz");
+const resultsContainer = document.getElementById("results");
+const submitButton = document.getElementById("submit");
 const myQuestions = [
     {
         question: "About what year was Hogwarts founded?",
@@ -188,6 +184,25 @@ const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 showSlide(currentSlide);
 
-submitButton.addEventListener('click', showResults);
+submitButton.addEventListener("click", showResults);
 nextButton.addEventListener("click", showNextSlide);
 
+(function () {
+    var sec = 60;
+    function startTimer() {
+        console.log('timer suppose to go')
+        var timer = setInterval(function () {
+            sec--;
+            document.getElementById('timerDisplay').innerHTML = '00:' + sec;
+            if (sec < 0) {
+                clearInterval(timer);
+                alert("Time is up!")
+            }
+        }, 1000);
+    }
+    document.getElementById('incorrect').addEventListener('click', function () {
+        sec -= 5;
+        document.getElementById('timerDisplay').innerHTML = '00:' + sec;
+    });
+    startTimer();
+})();
