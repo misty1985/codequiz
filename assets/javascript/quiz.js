@@ -187,7 +187,7 @@ showSlide(currentSlide);
 submitButton.addEventListener("click", showResults);
 nextButton.addEventListener("click", showNextSlide);
 
-(function () {
+function timerDisplay() {
     var sec = 60;
     function startTimer() {
         console.log('timer suppose to go')
@@ -205,4 +205,6 @@ nextButton.addEventListener("click", showNextSlide);
         document.getElementById('timerDisplay').innerHTML = '00:' + sec;
     });
     startTimer();
-})();
+}
+
+console.log("test")
