@@ -39,7 +39,7 @@ button{
 	margin-bottom: 20px;
 }
 button:hover{
-	background-color: #33aa5b;
+	background-color: #3ecc6d;
 }
 
 
@@ -60,6 +60,7 @@ button:hover{
   z-index: 2;
 }
 .quiz-container{
+  background-color: #ffffff;
   position: relative;
   height: 200px;
   margin-top: 40px;
